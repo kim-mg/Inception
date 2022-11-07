@@ -14,8 +14,7 @@ RUN apk update && \
 	openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/tls/myunkim.42.fr.crt -keyout /etc/nginx/tls/myunkim.42.fr.key -subj "/C=KR/ST=Seoul/L=Songpa-gu/O=42/OU=42Seoul/CN=myunkim.42.fr" && \
 	ln -sf /dev/stdout /var/log/nginx/access.log && \
 	ln -sf /dev/stderr /var/log/nginx/error.log && \
-	rm -rf /det/nginx/http.d/default.conf
-	# rm -rf /det/nginx/conf.d/default.conf
+	rm -rf /etc/nginx/http.d/default.conf
 
 COPY conf/nginx.conf /tmp/nginx.conf
 COPY tools/script.sh /tmp/script.sh

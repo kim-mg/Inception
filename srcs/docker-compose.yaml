@@ -19,6 +19,7 @@ services:
     volumes:
       - volume-mariadb:/var/lib/mysql
     restart: always
+    tty: true
   
   wordpress:
     build: ./requirements/wordpress/
@@ -36,7 +37,7 @@ services:
       - MARIADB_DB=${MARIADB_DB}
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PWD=${MARIADB_PWD}
-      - MAIRADB_HOST=${MARIADB_HOST}
+      - MARIADB_HOST=${MARIADB_HOST}
     image: wordpress
     networks:
       - network-mariadb
@@ -44,6 +45,7 @@ services:
     volumes:
       - volume-wordpress:/var/www/wordpress
     restart: always
+    tty: true
 
   nginx:
     build: ./requirements/nginx/
@@ -57,6 +59,7 @@ services:
       - network-nginx
     volumes:
       - volume-wordpress:/var/www/wordpress
+    tty: true
 
 networks:
   network-mariadb:
