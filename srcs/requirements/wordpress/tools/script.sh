@@ -1,3 +1,5 @@
+#!/bin/sh
+
 grep "listen = 127.0.0.1" /etc/php7/php-fpm.d/www.conf > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then

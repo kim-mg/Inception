@@ -19,7 +19,6 @@ services:
     volumes:
       - volume-mariadb:/var/lib/mysql
     restart: always
-    tty: true
   
   wordpress:
     build: ./requirements/wordpress/
@@ -46,7 +45,6 @@ services:
     volumes:
       - volume-wordpress:/var/www/wordpress
     restart: always
-    tty: true
 
   nginx:
     build: ./requirements/nginx/
@@ -60,7 +58,6 @@ services:
       - network-nginx
     volumes:
       - volume-wordpress:/var/www/wordpress
-    tty: true
 
 networks:
   network-mariadb:
@@ -72,16 +69,16 @@ networks:
 
 volumes:
   volume-mariadb:
-    # driver: local
-    # driver_opts:
-    #   device: ${VOLPATH}/mariadb
-    #   o: bind
-    #   type: volume
-    # name: volume-mariadb
+    driver: local
+    driver_opts:
+      device: ${VOLUME_PATH}/mariadb
+      o: bind
+      type: volume
+    name: volume-mariadb
   volume-wordpress:
-    # driver: local
-    # driver_opts:
-    #   device: ${VOLPATH}/wordpress
-    #   o: bind
-    #   type: volume
-    # name: volume-wordpress
+    driver: local
+    driver_opts:
+      device: ${VOLUME_PATH}/wordpress
+      o: bind
+      type: volume
+    name: volume-wordpress

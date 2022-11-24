@@ -1,24 +1,5 @@
 FROM alpine:3.15
 
-# VOLUME /sys/fs/cgroup
-
-# dumb-init 사용법
-# wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64 && \
-# chmod +x /usr/bin/dumb-init && \
-
-# RUN apk update && \
-# 	apk add mariadb mariadb-client && \
-# 	mkdir -p /run/mysql /var/lib/mysql && \
-# 	mariadb-install-db --datadir=/var/lib/mysql --auth-root-authentication-method=normal && \
-# 	chown -R mysql:mysql /var/lib/mysql /run/mysql && \
-# 	apk add openrc && \
-# 	mkdir -p /run/openrc && \
-# 	touch /run/openrc/softlevel && \
-# 	rc-status && \
-# 	rc-update add mariadb default && \
-# 	rc-service mariadb restart
-
-# >>>> test dumb-init <<<<
 RUN apk update && \
 	apk add mariadb mariadb-client && \
 	wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64 && \
@@ -28,7 +9,6 @@ RUN apk update && \
 	chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
 COPY conf/query.sql /tmp/query.sql
-# COPY conf/conf.sql /tmp/conf.sql
 COPY tools/script.sh /tmp/script.sh
 
 RUN chmod +x /tmp/script.sh
