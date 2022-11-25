@@ -26,9 +26,9 @@ fclean : clean
 	sudo docker network prune -f
 	sudo docker volume prune -f
 	sudo docker image prune -a -f
-	sudo sed '/myunkim.42.fr/d' /etc/hosts > hosts
-	sudo cat hosts > /etc/hosts
-	sudo rm -rf hosts
+	sudo sed '/myunkim.42.fr/d' /etc/hosts > ./hosts
+	sudo cat ./hosts > /etc/hosts
+	sudo rm -rf ./hosts
 
 re : fclean all
 
