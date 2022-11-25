@@ -29,7 +29,6 @@ fclean : clean
 	sudo sed '/myunkim.42.fr/d' /etc/hosts > hosts
 	sudo cat hosts > /etc/hosts
 	sudo rm -rf hosts
-	sleep 3
 
 re : fclean all
 

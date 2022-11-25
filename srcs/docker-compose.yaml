@@ -6,8 +6,6 @@ services:
     container_name: mariadb
     environment:
       - HOST_NAME=${HOST_NAME}
-      - HOST_IPV4=${HOST_IPV4}
-      - HOST_IPV6=${HOST_IPV6}
       - MARIADB_DB=${MARIADB_DB}
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PWD=${MARIADB_PWD}

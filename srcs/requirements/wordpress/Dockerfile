@@ -1,11 +1,5 @@
 FROM alpine:3.15
 
-# VOLUME /sys/fs/cgroup
-
-# apk add openrc && \
-	# mkdir -p /run/openrc && touch /run/openrc/softlevel && \
-	# rc-status && \
-
 RUN apk update && \
 	wget -O /usr/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64 && \
 	chmod +x /usr/bin/dumb-init && \
@@ -13,11 +7,7 @@ RUN apk update && \
 	mkdir -p /var/www/wordpress && \
 	curl -s -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --output /usr/bin/wp && \
 	chmod +x /usr/bin/wp && \
-	wp core download --version=5.8.1 --path=/var/www/wordpress
-	# cd /var/www && \
-	# wget http://wordpress.org/latest.tar.gz && \
-	# tar -xvzf latest.tar.gz && \
-	# rm latest.tar.gz
+	wp core download --version=6.1.1 --path=/var/www/wordpress
 
 COPY conf/wp-config.php /tmp/wp-config.php
 COPY tools/script.sh /tmp/script.sh
